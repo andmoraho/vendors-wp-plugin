@@ -1,0 +1,203 @@
+.amhvndr_wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 100px 0px 50px;
+}
+
+.amhvndr_services {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    --amhvndr-service-width: 40%;
+    --amhvndr-service-margin: 20px;
+    --amhvndr-service-primary-color: #333;
+    --amhvndr-service-secondary-color: #ccc;
+    --amhvndr-service-tertiary-color: #22b24c;
+    --amhvndr-service-title-font-size: 18px;
+    --amhvndr-service-title-text-align: center;
+    --amhvndr-service-title-margin-top: 10px;
+    --amhvndr-service-button-margin-top: 15px;
+    --amhvndr-service-button-border-radius: 5px;
+    --amhvndr-service-read-more-btn-width: 50%;
+    --amhvndr-service-read-more-btn-padding: 12px 15px;
+    --amhvndr-service-read-more-btn-text-color: #fff;
+    --amhvndr-service-read-more-btn-font-size: 14px;
+    --amhvndr-service-read-more-btn-border-radius: 4px;
+    --amhvndr-service-read-more-btn-text-align: center;
+}
+
+.amhvndr_archive-title {
+    font-size: 20px;
+}
+
+.amhvndr_service {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: var(--amhvndr-service-width);
+    margin: var(--amhvndr-service-margin);
+    border: 1px solid var(--amhvndr-service-secondary-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px var(--amhvndr-service-secondary-color);
+}
+
+.amhvndr_service__image {
+    width: 100%;
+}
+
+.amhvndr_service__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.amhvndr_service__container .amhvndr_service__content h4.amhvndr_service__content-title {
+    color: var(--amhvndr-service-primary-color);
+    font-size: var(--amhvndr-service-title-font-size);
+    font-family: inherit;
+    font-weight: 700;
+    text-align: var(--amhvndr-service-title-text-align);
+    margin-top: var(--amhvndr-service-title-margin-top);
+}
+
+.amhvndr_service__content p {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.amhvndr_service__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: var(--amhvndr-service-button-margin-top);
+    border-radius: var(--amhvndr-service-button-border-radius);
+}
+
+.amhvndr_service__button a,
+.amhvndr_service__button a:active,
+.amhvndr_service__button a:visited {
+    background-color: var(--amhvndr-service-tertiary-color);
+    color: var(--amhvndr-service-read-more-btn-text-color);
+    padding: var(--amhvndr-service-read-more-btn-padding);
+    text-align: var(--amhvndr-service-read-more-btn-text-align);
+    width: var(--amhvndr-service-read-more-btn-width);
+}
+
+.amhvndr_service__button a:hover {
+    background-color: var(--amhvndr-service-tertiary-color);
+    opacity: 0.8;
+}
+
+.amhvndr_btn {
+    font-size: var(--amhvndr-service-read-more-btn-font-size);
+    border: 1px solid transparent;
+    border-radius: var(--amhvndr-service-read-more-btn-border-radius);
+}
+
+
+/* Pagination */
+
+.amhvndr_pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 20px;
+    --amhvndr-service-pagination-primary-color: #333;
+    --amhvndr-service-pagination-secondary-color: #666;
+    --amhvndr-service-pagination-numbers-padding: 8px;
+    --amhvndr-service-pagination-numbers-margin: 5px;
+}
+
+.amhvndr_pagination span.page-numbers.current {
+    color: var(--amhvndr-service-pagination-secondary-color);
+    padding: var(--amhvndr-service-pagination-numbers-padding);
+    margin: var(--amhvndr-service-pagination-numbers-margin);
+    border: 1px solid var(--amhvndr-service-pagination-primary-color);
+}
+
+.amhvndr_pagination a.page-numbers {
+    color: var(--amhvndr-service-pagination-primary-color);
+    padding: var(--amhvndr-service-pagination-numbers-padding);
+    margin: var(--amhvndr-service-pagination-numbers-margin);
+    border: 1px solid var(--amhvndr-service-pagination-primary-color);
+}
+
+.amhvndr_pagination a.page-numbers:hover {
+    color: var(--amhvndr-service-pagination-secondary-color);
+    padding: var(--amhvndr-service-pagination-numbers-padding);
+}
+
+
+/* Single Service */
+
+.amhvndr_service-single {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    --amhvndr-service-single-primary-color: #22b24c;
+    --amhvndr-service-single-margin-title: 20px;
+    --amhvndr-service-single-margin-excerpt: 20px;
+    --amhvndr-service-single-font-size-text: 18px;
+    --amhvndr-service-single-margin-content: 20px;
+    --amhvndr-service-single-button-margin-top: 15px;
+    --amhvndr-service-single-button-border-radius: 5px;
+    --amhvndr-service-single-checklist-btn-width: 30%;
+    --amhvndr-service-single-checklist-btn-padding: 12px 15px;
+    --amhvndr-service-single-checklist-btn-text-color: #fff;
+    --amhvndr-service-single-checklist-btn-font-size: 14px;
+    --amhvndr-service-single-checklist-btn-border-radius: 4px;
+    --amhvndr-service-single-checklist-btn-text-align: center;
+}
+
+.amhvndr_service-single__title {
+    text-align: center;
+    margin: var(--amhvndr-service-single-margin-title);
+}
+
+.amhvndr_service-single__excerpt {
+    font-size: var(--amhvndr-service-single-font-size-text);
+    text-align: center;
+    margin: var(--amhvndr-service-single-margin-excerpt);
+}
+
+.amhvndr_service-single__content {
+    margin: var(--amhvndr-service-single-margin-content) 0;
+}
+
+.amhvndr_service-single__content p {
+    font-size: var(--amhvndr-service-single-font-size-text);
+}
+
+.amhvndr_service-single__checklist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: var(--amhvndr-service-single-button-margin-top);
+    border-radius: var(--amhvndr-service-single-button-border-radius);
+}
+
+.amhvndr_service-single__checklist a,
+.amhvndr_service-single__checklist a:active,
+.amhvndr_service-single__checklist a:visited {
+    background-color: var(--amhvndr-service-single-primary-color);
+    color: var(--amhvndr-service-single-checklist-btn-text-color);
+    padding: var(--amhvndr-service-single-checklist-btn-padding);
+    text-align: var(--amhvndr-service-single-checklist-btn-text-align);
+    width: var(--amhvndr-service-single-checklist-btn-width);
+}
+
+.amhvndr_service-single__checklist a:hover {
+    background-color: var(--amhvndr-service-single-primary-color);
+    opacity: 0.8;
+    color: var(--amhvndr-service-single-checklist-btn-text-color);
+}
