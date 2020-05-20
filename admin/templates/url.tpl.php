@@ -4,5 +4,6 @@ wp_nonce_field('vendor_url_metabox', 'vendor_url_metabox_nonce');
 ?>
 <div>
   <label for="vendor_url"><?php _e('URL:'); ?></label>
-  <input type="text" name="vendor_url" id="vendor_url" value="<?php echo $vendorUrl; ?>" /> 
+  <input type="text" name="vendor_url" id="vendor_url" value="<?php echo $vendorUrl; ?>" />
+  <span class="vendor_url_error_message">URL Not Valid</span>
 </div>
