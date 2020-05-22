@@ -1,24 +1,24 @@
 <?php get_header();?>
 
-<section class="amhcls_wrap">
+<section class="amhvndr_wrap">
         <?php if (have_posts()) : ?>
             <?php
-                the_archive_title('<h1 class="amhcls_archive-title">', '</h1>');
+                the_archive_title('<h1 class="amhvndr_archive-title">', '</h1>');
             ?>
         <?php endif; ?>
-        <div class="amhcls_services">
+        <div class="amhvndr_vendors">
             <?php while (have_posts()) { ?>
             <?php the_post(); ?>              
-            <div class="amhcls_service">
-                <div class="amhcls_service__container">
-                    <div class="amhcls_service__image">
+            <div class="amhvndr_vendor">
+                <div class="amhvndr_vendor__container">
+                    <div class="amhvndr_vendor__image">
                         <?php echo get_the_post_thumbnail($post, $size = 'large', $attr = '');?>
                     </div>
-                    <div class="amhcls_service__content">
-                        <h4 class="amhcls_service__content-title"><?php echo the_title();?></h4>
-                        <p><?php wp_trim_words(the_excerpt(), 25);?></p>
+                    <div class="amhvndr_vendor__content">
+                        <h4 class="amhvndr_vendor__content-title"><?php echo the_title();?></h4>
+                        <p><?php the_content();?></p>
                     </div>
-                    <div class="amhcls_service__button">
+                    <div class="amhvndr_vendor__button">
                         <a href="<?php echo the_permalink();?>" class="amhcl_btn"><?php echo __('Read More');?></a>
                     </div>                        
                 </div>
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Pagination Links -->
-        <div class="amhcls_pagination">
+        <div class="amhvndr_pagination">
             <?php
                 $big = 999999999; // need an unlikely integer
                 echo paginate_links(array(

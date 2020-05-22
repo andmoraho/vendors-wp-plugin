@@ -157,7 +157,6 @@ class Andmoraho_Vendors
         $this->loader->add_action('init', $andmoraho_vendors_admin, 'create_post_type');
         $this->loader->add_action('add_meta_boxes', $andmoraho_vendors_admin, 'add_service_metaboxes');
         $this->loader->add_action('save_post', $andmoraho_vendors_admin, 'services_save_metabox_data');
-        $this->loader->add_action('admin_enqueue_scripts', $andmoraho_vendors_admin, 'service_checklist_add_admin_scripts');
         $this->loader->add_action('admin_enqueue_scripts', $andmoraho_vendors_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $andmoraho_vendors_admin, 'enqueue_scripts');
     }

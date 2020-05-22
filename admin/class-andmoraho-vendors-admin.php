@@ -81,10 +81,10 @@ class Andmoraho_Vendors_Admin
      */
     public function add_service_metaboxes()
     {
-        add_meta_box('_andmoraho_vendor_checklist', _('PDF Checklist'), array( $this, 'andmoraho_vendor_checklist_metabox_callback'), 'vendor', 'side', 'high');
-        add_meta_box('_andmoraho_vendor_charge-base-0', _('Charge'), array( $this, 'andmoraho_vendor_charge_metabox_callback'), 'vendor', 'normal', 'high');
-        add_meta_box('_andmoraho_vendor_base-price-1', _('Base Price'), array( $this, 'andmoraho_vendor_price_metabox_callback'), 'vendor', 'normal', 'high');
-        add_meta_box('_andmoraho_vendor_rooms-price-2', _('Rooms'), array( $this, 'andmoraho_vendor_rooms_metabox_callback'), 'vendor', 'normal', 'high');
+        add_meta_box('_andmoraho_vendor_contact_person-0', _('Contact Person'), array( $this, 'andmoraho_vendor_contact_person_metabox_callback'), 'vendor', 'normal', 'high');
+        add_meta_box('_andmoraho_vendor_email-1', _('Email'), array( $this, 'andmoraho_vendor_email_metabox_callback'), 'vendor', 'normal', 'high');
+        add_meta_box('_andmoraho_vendor_phone-2', _('Phone'), array( $this, 'andmoraho_vendor_phone_metabox_callback'), 'vendor', 'normal', 'high');
+        add_meta_box('_andmoraho_vendor_url-3', _('Rooms'), array( $this, 'andmoraho_vendor_url_metabox_callback'), 'vendor', 'normal', 'high');
     }
 
     /**
@@ -231,7 +231,7 @@ class Andmoraho_Vendors_Admin
         'supports'             => $supports,
         'public'               => true,
         'has_archive'          => true,
-        'menu_icon'            => plugins_url('images/vendor-icon.png', __FILE__),
+        'menu_icon'            => plugins_url('images/vendors-icon.png', __FILE__),
         );
   
         register_post_type('vendor', $args);

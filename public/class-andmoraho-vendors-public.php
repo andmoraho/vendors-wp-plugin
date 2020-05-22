@@ -168,11 +168,9 @@ class Andmoraho_Vendors_Public
                         </div>
                         <div class="amhvndr_vendor__content">
                             <h4 class="amhvndr_vendor__content-title">'.get_the_title().'</h4>
-                            <p>'.wp_trim_words(get_the_excerpt(), 25).'</p>
+                            <p>'.get_the_content().'</p>
                         </div>
-                        <div class="amhvndr_vendor__button">
-                            <a href="'.get_the_permalink().'" class="amhvndr_btn">'.__('Read More').'</a>
-                        </div>                        
+                                           
                     </div>
                 </div>';
         // TODO: organizar el html que se va a mostrar con el shortcode

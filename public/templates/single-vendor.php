@@ -2,21 +2,21 @@
 
 <?php while (have_posts()) { ?>
 <?php the_post(); ?>  
-    <section class="amhcls_wrap">
-        <div class="amhcls_service-single">
-            <div class="amhcls_service-single__container">
-                <h2 class="amhcls_service-single__title"><?php the_title();?></h2>
-                <p class="amhcls_service-single__excerpt"><?php echo get_the_excerpt();?></p>
+    <section class="amhvndr_wrap">
+        <div class="amhvndr_vendor-single">
+            <div class="amhvndr_vendor-single__container">
+                <h2 class="amhvndr_vendor-single__title"><?php the_title();?></h2>
+                <p class="amhvndr_vendor-single__excerpt"><?php echo get_the_excerpt();?></p>
 
-                <div class="amhcls_service-single__image">
+                <div class="amhvndr_vendor-single__image">
                     <?php echo get_the_post_thumbnail($post, $size = 'large', $attr = '');?>
                 </div>
-                <div class="amhcls_service-single__content">
+                <div class="amhvndr_vendor-single__content">
                     <?php the_content();?>
                 </div>
                 
-                <div class="amhcls_service-single__checklist">
-                    <a href="#" class="amhcls_btn">View Checklist</a>
+                <div class="amhvndr_vendor-single__checklist">
+                    <a href="#" class="amhvndr_btn">View Checklist</a>
                 </div>
                 
             </div>
