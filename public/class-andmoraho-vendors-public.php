@@ -277,7 +277,7 @@ class Andmoraho_Vendors_Public
         $columns = array(
         'cb' => '<input type="checkbox" />',
         'title' => __('Title'),
-        'shortcode' => __('Shortcode'),
+        'shortcode' => __('Shortcode <strong>[vendors]</strong>'),
         'featured_image' => __('Thumbnail'),
         'date' => __('Date')
         );
