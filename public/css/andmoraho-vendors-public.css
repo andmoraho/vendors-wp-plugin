@@ -185,7 +185,7 @@
     margin: 20px;
     --amhvndr-vendor-pagination-primary-color: #333;
     --amhvndr-vendor-pagination-secondary-color: #666;
-    --amhvndr-vendor-pagination-numbers-padding: 8px;
+    --amhvndr-vendor-pagination-numbers-padding: 5px 15px;
     --amhvndr-vendor-pagination-numbers-margin: 5px;
 }
 

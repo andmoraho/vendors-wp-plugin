@@ -15,15 +15,16 @@ if (isset($_GET['vendorscat']) && '' != $_GET['vendorscat']) {
     $tax_query = array();
 }
 
+$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+
+
 
 $query_args = array(
         'post_type' => 'vendor',
         'post_status' => 'publish',
-        'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+        'paged' => $paged,
         'tax_query' => $tax_query
         );
-
-
 
 $queryVendor = new WP_Query($query_args);
 ?>
@@ -121,11 +122,13 @@ $queryVendor = new WP_Query($query_args);
                 $big = 999999999; // need an unlikely integer
                 echo paginate_links(array(
                     'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+                    'total' => $queryVendor->max_num_pages,
                     'format' => '?paged=%#%',
                     'current' => max(1, get_query_var('paged'))
                 ));
             ?>
         </div>
 </section>
+<?php //wp_reset_postdata();?>
             
 <?php get_footer();?>
