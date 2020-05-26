@@ -118,7 +118,7 @@ class Andmoraho_Vendors_Public
     * Vendors shortcode
     *
     */
-    public function andmoraho_vendors_list_services($atts = array())
+    public function andmoraho_vendors_list_vendors($atts = array())
     {
         global $post;
 
@@ -138,38 +138,115 @@ class Andmoraho_Vendors_Public
             'vendors'
         );
 
-       
-        switch_to_blog($blogid);
+        if (is_multisite()) {
+            switch_to_blog($blogid);
+        }
+
+        if (isset($_GET['vendorscat']) && '' != $_GET['vendorscat']) {
+            $vendorscategory = $_GET['vendorscat'];
+            $tax_query = array(
+                array(
+                'taxonomy' => 'vendor-categories',
+                'field' => 'name',
+                'terms' => empty($vendorscategory)?'':$vendorscategory,
+                )
+                );
+        } else {
+            $vendorscategory = '';
+            $tax_query = array();
+        }
+
+
         if (is_numeric(esc_attr($atts['id'])) && esc_attr($atts['id'])!='') {
             $query_args = array(
             'p' => esc_attr($atts['id']),
             'post_type' => 'vendor',
             'post_status' => 'publish',
-            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+            'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+            'tax_query' => $tax_query
+            
             );
         } else {
             $query_args = array(
             'post_type' => 'vendor',
             'post_status' => 'publish',
-            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+            'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+            'tax_query' => $tax_query
             );
         }
+       
         
-        $html = '<div class="amhvndr_vendorss">';
+        $html = '<section class="amhvndr_wrap">';
+        $html .= '<div class="amhvndr_filter">
+            <div class="amhvndr_filter__label">Filter: </div>
+            <div class="amhvndr_filter__form">
+        <form action="" method="GET" id="vendorslist">
+        <select name="vendorscat" id="vendorscat" onchange="submit();">
+        <option value="">Show all</option>';
 
+        $categories = get_categories('taxonomy=vendor-categories');
+        foreach ($categories as $category) :
+        $html .='<option value="'.$category->name.'"';
+        $html .= ($_GET['vendorscat'] == ''.$category->name.'') ? ' selected="selected"' : '';
+        $html .= '>'.$category->name.'</option>';
+        endforeach;
+
+        $html .= '</select>
+            </form>
+         </div>
+        </div>';
+
+        $html .= '<div class="amhvndr_vendors">';
         $shortcodeVendor = new WP_Query($query_args);
         
         while ($shortcodeVendor->have_posts()) :
             $shortcodeVendor->the_post();
+
+        $the_featured_image = get_the_post_thumbnail($post, $size = 'large', $attr = '') !='' ? get_the_post_thumbnail($post, $size = 'large', $attr = '') : '<img src="'.plugins_url('./images/default-vendor-logo.png', __FILE__).'">';
+        $vendorContactPerson = get_post_meta($post->ID, '_vendor_contact_person', true);
+        $vendorEmail = get_post_meta($post->ID, '_vendor_email', true);
+        $vendorPhone = get_post_meta($post->ID, '_vendor_phone', true);
+        $vendorUrl = get_post_meta($post->ID, '_vendor_url', true);
+
         $html .= '<div class="amhvndr_vendor">
                     <div class="amhvndr_vendor__container">
                         <div class="amhvndr_vendor__image">
-                            '.get_the_post_thumbnail($post, $size = 'large', $attr = '').'
+                            <a href="'.$vendorUrl.'" target="_blank">'.$the_featured_image.'</a>
                         </div>
-                        <div class="amhvndr_vendor__content">
-                            <h4 class="amhvndr_vendor__content-title">'.get_the_title().'</h4>
+                         <div class="amhvndr_vendor__content">
+                        <h4 class="amhvndr_vendor__content-title">'.get_the_title().'</h4>
+                        <div class="amhvndr_vendor__content-description">
                             <p>'.get_the_content().'</p>
                         </div>
+                        <div class="amhvndr_vendor__content-data">';
+        if ($vendorContactPerson) {
+            $html .= '<div class="amhvndr_vendor__content-data-item">
+                                <span class="dashicons dashicons-admin-users" title="Contact Person"></span> 
+                                '.$vendorContactPerson.'
+                            </div>';
+        }
+        if ($vendorEmail) {
+            $html .= '<div class="amhvndr_vendor__content-data-item">
+                                <span class="dashicons dashicons-email" title="Email"></span> 
+                                <a href="mailto:'.$vendorEmail.'">'.$vendorEmail.'</a>
+                            </div>';
+        }
+        if ($vendorPhone) {
+            $html .= '<div class="amhvndr_vendor__content-data-item">
+                                <span class="dashicons dashicons-smartphone" title="Phone"></span> 
+                                '.$vendorPhone.'
+                            </div>';
+        }
+        if ($vendorUrl) {
+            $html .= '<div class="amhvndr_vendor__content-data-item">
+                                <span class="dashicons dashicons-admin-site-alt3" title="Website"></span> 
+                                <a href="'.$vendorUrl.'" target="_blank">'.preg_replace('/(http(s)?:\/\/)/', '', $vendorUrl).'</a>
+                            </div>';
+        }
+        $html .= '</div>
+                        
+                        
+                    </div>
                                            
                     </div>
                 </div>';
@@ -184,7 +261,8 @@ class Andmoraho_Vendors_Public
                 'current' => max(1, get_query_var('paged')),
                 'total' => $shortcodeVendor->max_num_pages
             ));
-        $html .= '</div>';
+        $html .= '</div>
+        </section>';
         wp_reset_postdata();
         return $html;
     }
@@ -221,7 +299,7 @@ class Andmoraho_Vendors_Public
         }
 
         if ($column_name == 'shortcode') {
-            echo '[services id="'.$post_id.'"]';
+            echo '[vendors id="'.$post_id.'"]';
         }
     }
 

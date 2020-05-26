@@ -4,5 +4,6 @@ wp_nonce_field('vendor_phone_metabox', 'vendor_phone_metabox_nonce');
 ?>
 <div>
   <label for="vendor_phone"><?php _e('Phone:'); ?></label>
-  <input type="text" name="vendor_phone" id="vendor_phone" value="<?php echo $vendorPhone; ?>" /> 
+  <input type="text" name="vendor_phone" id="vendor_phone" value="<?php echo $vendorPhone; ?>" />
+  <span class="vendor_phone_error_message">Invalid Phone Number</span> 
 </div>

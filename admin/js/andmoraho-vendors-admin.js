@@ -2,6 +2,11 @@ var $ = jQuery.noConflict()
 $(document).ready(function () {
   $('.vendor_email_error_message').hide()
   $('.vendor_url_error_message').hide()
+  $('.vendor_phone_error_message').hide()
+  // Add Image Size text//
+  $('#postimagediv .inside').prepend(
+    '<p>Recommended image size <strong>350 x 175 px</strong></p>'
+  )
   /////////////////// Email ///////////////////////////
   $('#vendor_email').on('change keyup paste', function () {
     let vendorEmail = $.trim($('#vendor_email').val())

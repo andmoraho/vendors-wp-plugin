@@ -79,12 +79,12 @@ class Andmoraho_Vendors_Admin
      *
      * @since    1.0.0
      */
-    public function add_service_metaboxes()
+    public function add_vendor_metaboxes()
     {
         add_meta_box('_andmoraho_vendor_contact_person-0', _('Contact Person'), array( $this, 'andmoraho_vendor_contact_person_metabox_callback'), 'vendor', 'normal', 'high');
         add_meta_box('_andmoraho_vendor_email-1', _('Email'), array( $this, 'andmoraho_vendor_email_metabox_callback'), 'vendor', 'normal', 'high');
         add_meta_box('_andmoraho_vendor_phone-2', _('Phone'), array( $this, 'andmoraho_vendor_phone_metabox_callback'), 'vendor', 'normal', 'high');
-        add_meta_box('_andmoraho_vendor_url-3', _('Rooms'), array( $this, 'andmoraho_vendor_url_metabox_callback'), 'vendor', 'normal', 'high');
+        add_meta_box('_andmoraho_vendor_url-3', _('URL'), array( $this, 'andmoraho_vendor_url_metabox_callback'), 'vendor', 'normal', 'high');
     }
 
     /**
@@ -192,7 +192,7 @@ class Andmoraho_Vendors_Admin
     /**
      * Create custom type
      *
-     * Create Services Post Type
+     * Create Vendors Post Type
      *
      * @since    1.0.0
      */
@@ -218,7 +218,6 @@ class Andmoraho_Vendors_Admin
         $supports = array(
         'title',
         'editor',
-        'excerpt',
         'thumbnail'
         );
         $rewrite = array(
@@ -238,16 +237,16 @@ class Andmoraho_Vendors_Admin
 
         // Vendor Categories
         register_taxonomy(
-            'categories',
+            'vendor-categories',
             array('vendor'),
             array(
         'hierarchical' => true,
         'label' => 'Categories',
         'singular_label' => 'Category',
-        'rewrite' => array( 'slug' => 'categories', 'with_front'=> false )
+        'rewrite' => array( 'slug' => 'vendor-categories', 'with_front'=> false )
         )
         );
 
-        register_taxonomy_for_object_type('categories', 'vendor');
+        register_taxonomy_for_object_type('vendor-categories', 'vendor');
     }
 }

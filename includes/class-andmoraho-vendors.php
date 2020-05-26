@@ -155,8 +155,8 @@ class Andmoraho_Vendors
         $andmoraho_vendors_admin = new Andmoraho_Vendors_Admin($this->get_andmoraho_vendors(), $this->get_version());
 
         $this->loader->add_action('init', $andmoraho_vendors_admin, 'create_post_type');
-        $this->loader->add_action('add_meta_boxes', $andmoraho_vendors_admin, 'add_service_metaboxes');
-        $this->loader->add_action('save_post', $andmoraho_vendors_admin, 'services_save_metabox_data');
+        $this->loader->add_action('add_meta_boxes', $andmoraho_vendors_admin, 'add_vendor_metaboxes');
+        $this->loader->add_action('save_post', $andmoraho_vendors_admin, 'vendors_save_metabox_data');
         $this->loader->add_action('admin_enqueue_scripts', $andmoraho_vendors_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $andmoraho_vendors_admin, 'enqueue_scripts');
     }
@@ -175,8 +175,8 @@ class Andmoraho_Vendors
         $this->loader->add_action('init', $andmoraho_vendors_public, 'andmoraho_vendors_register_shortcodes');
         $this->loader->add_action('wp_enqueue_scripts', $andmoraho_vendors_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $andmoraho_vendors_public, 'enqueue_scripts');
-        $this->loader->add_filter('manage_service_posts_columns', $andmoraho_vendors_public, 'andmoraho_vendors_shortcode_custom_column');
-        $this->loader->add_action('manage_service_posts_custom_column', $andmoraho_vendors_public, 'andmoraho_vendors_shortcode_custom_column_data', 10, 2);
+        $this->loader->add_filter('manage_vendor_posts_columns', $andmoraho_vendors_public, 'andmoraho_vendors_shortcode_custom_column');
+        $this->loader->add_action('manage_vendor_posts_custom_column', $andmoraho_vendors_public, 'andmoraho_vendors_shortcode_custom_column_data', 10, 2);
         $this->loader->add_filter('single_template', $andmoraho_vendors_public, 'andmoraho_vendors_single_cpt_template');
         $this->loader->add_filter('archive_template', $andmoraho_vendors_public, 'andmoraho_vendors_archive_cpt_template');
     }
